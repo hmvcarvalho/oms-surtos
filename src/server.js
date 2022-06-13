@@ -24,3 +24,6 @@ connection.once('open', () => {
         console.log(`Server listening on port http://localhost:${port}`);
     });
 });
+
+const countryRoutes = require('./routes/CountryRoute');
+app.use('/api/country', countryRoutes);

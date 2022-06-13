@@ -12,9 +12,9 @@ const CountrySchema = new Schema({
         required : true,
         unique : true
     },
-    zoneCode : {
-        type: Schema.Types.ObjectId,
-        ref: 'Zone'
-    }
+    // zoneCode : {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Zone'
+    // }
 });
 module.exports = model('Country', CountrySchema);
