@@ -1,5 +1,6 @@
 const express = require('express');
-let { connect, Promise, connection } = require('mongoose');
+let { connect, connection } = require('mongoose');
+const { recommendationRouter } = require('./routes/recommendationRoute');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 // routes
 const outbreaksRoutes = require("./routes/outbreaksRoutes");
 app.use("/api/outbreaks", outbreaksRoutes);
+app.use('/recommendation', recommendationRouter);
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 
@@ -28,3 +30,9 @@ connection.once('open', () => {
         console.log(`Server listening on port http://localhost:${port}`);
     });
 });
+
+const countryRoutes = require('./routes/CountryRoute');
+app.use('/api/country', countryRoutes);
+
+const geoZoneRoutes = require('./routes/GeoZoneRoute');
+app.use('/api/geoZone', geoZoneRoutes);
