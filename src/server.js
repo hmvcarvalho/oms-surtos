@@ -27,3 +27,6 @@ connection.once('open', () => {
 
 const countryRoutes = require('./routes/CountryRoute');
 app.use('/api/country', countryRoutes);
+
+const geoZoneRoutes = require('./routes/GeoZoneRoute');
+app.use('/api/geoZone', geoZoneRoutes);
