@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+// routes
+const outbreaksRoutes = require("./routes/outbreaksRoutes");
+app.use("/api/outbreaks", outbreaksRoutes);
+
 connection.on('error', console.error.bind(console, 'connection error:'));
 
 connection.once('open', () => {
