@@ -1,5 +1,6 @@
 const express = require('express');
-let { connect, Promise, connection } = require('mongoose');
+let { connect, connection } = require('mongoose');
+const { recommendationRouter } = require('./routes/recommendationRoute');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -14,6 +15,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+app.use('/recommendation', recommendationRouter);
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 
