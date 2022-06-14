@@ -16,6 +16,6 @@ virusRouter.post('/', (req, res) => {
         })
 });
 
-virusRouter.get()
+
 
 module.exports = virusRouter;
