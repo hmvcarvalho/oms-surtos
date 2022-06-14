@@ -1,6 +1,10 @@
 const { Router } = require('express');
 const countryModel = require('../models/country');
+
 const geoZoneModel = require('../models/geoZone');
+
+const { listRecomemendationsByCountry } = require('../services/recommendationService');
+
 const countryDTO = require('../models/dtos/country/countryDTO');
 const countryRouter = Router();
 
@@ -77,6 +81,12 @@ countryRouter.get('/:code', (req, res) => {
         .catch((error) => {
             res.status(400).json(error);
         });
+});
+
+
+//get recs by country by id
+app.get('/:id/recomendacoes', (req, res) => {
+    listRecomemendationsByCountry(req.params.id).then((recommendations) => res.json(recommendations));
 });
 
 module.exports = countryRouter;
