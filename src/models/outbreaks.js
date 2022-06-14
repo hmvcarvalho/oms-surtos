@@ -15,10 +15,6 @@ const outbreakSchema = new Schema({
     },
     detDate: { type: Date, required: true }, // VALIDAR detDate como anterior
     endDate: { type: Date }, // a endDate
-    virus: {
-        type: Schema.Types.ObjectId,
-        ref: 'Virus',
-    },
 });
 
 module.exports = mongoose.model('Outbreaks', outbreakSchema);

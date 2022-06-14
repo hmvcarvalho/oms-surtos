@@ -1,8 +1,8 @@
 class outbreakVirusDTO {
-    constructor({ code, name, geo, detDate, endDate }) {
-        this.virusCode = code;
-        this.virus_name = name;
-        this.virus_geoCode = geo;
+    constructor({ virusCode, geoCode, detDate, endDate }) {
+        this.virusCode = virusCode;
+        // this.virus_name = name;
+        this.virus_geoCode = geoCode;
         this.virus_detDate = detDate;
         this.virus_endDate = endDate;
     }

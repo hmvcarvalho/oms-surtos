@@ -49,6 +49,8 @@ virusRouter.get('/:id/outbreaks', (req, res) => {
         });
 });
 
+// outbreak.virusCode, outbreak.geoCode, outbreak.detDate, outbreak.endDate
+
 // virusRouter.get('/:id/outbreaks', (req, res) => {
 //     outbreaksModel
 //         .find({ virusCode: req.params.id })
