@@ -16,7 +16,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/api/recommendation', recommendationRouter);
+// routes
+const outbreaksRoutes = require("./routes/outbreaksRoutes");
+app.use("/api/outbreaks", outbreaksRoutes);
+app.use('/recommendation', recommendationRouter);
+
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 
@@ -33,3 +37,9 @@ app.use('/api/country', countryRoutes);
 
 const geoZoneRoutes = require('./routes/GeoZoneRoute');
 app.use('/api/geoZone', geoZoneRoutes);
+
+
+// routes virus
+
+const virusRoutes = require('./routes/VirusRoute');
+app.use('/api/virus', virusRoutes);
