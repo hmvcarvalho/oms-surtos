@@ -3,7 +3,7 @@ const virusModel = require('../models/virus');
 const outbreaksModel = require('../models/outbreaks');
 const { checkSchema } = require('express-validator');
 const { virusValidationSchema } = require('../validators/virusValidator');
-const outbreakVirusDTO = require('../models/dtos/outbreakVirusDTO');
+const outbreakVirusDTO = require('../models/dtos/outbreaks/outbreakVirusDTO');
 
 const validationErrorsMiddleware = require('../middlewares/validationErrorsMiddleware');
 
@@ -48,6 +48,8 @@ virusRouter.get('/:id/outbreaks', (req, res) => {
             res.status(400).json(err);
         });
 });
+
+// outbreak.virusCode, outbreak.geoCode, outbreak.detDate, outbreak.endDate
 
 // virusRouter.get('/:id/outbreaks', (req, res) => {
 //     outbreaksModel
