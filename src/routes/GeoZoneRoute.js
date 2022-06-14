@@ -2,9 +2,12 @@ const { Router } = require('express');
 const geoZoneModel = require('../models/geoZone');
 const geoZoneDTO = require('../models/dtos/geoZone/geoZoneDTO');
 const geoZoneRouter = Router();
+const { geoZoneValidatorSchema } = require('../validators/geoZoneValidator');
+const validationErrorsMiddleware = require('../middlewares/validationErrorsMiddleware');
+const { checkSchema } = require('express-validator');
 
 // //create geoZone
-geoZoneRouter.post('/', (req, res) => {
+geoZoneRouter.post('/', checkSchema(geoZoneValidatorSchema), validationErrorsMiddleware, (req, res) => {
     geoZoneModel
         .create({ ...req.body })
         .then(() => {

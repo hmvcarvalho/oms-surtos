@@ -32,10 +32,10 @@ connection.once('open', () => {
     });
 });
 
-const countryRoutes = require('./routes/CountryRoute');
+const countryRoutes = require('./routes/countryRoute');
 app.use('/api/country', countryRoutes);
 
-const geoZoneRoutes = require('./routes/GeoZoneRoute');
+const geoZoneRoutes = require('./routes/geoZoneRoute');
 app.use('/api/geoZone', geoZoneRoutes);
 
 
