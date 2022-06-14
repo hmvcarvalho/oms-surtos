@@ -23,9 +23,11 @@ recommendationRouter.get('/', (req, res) => {
             res.status(500).json({ message: err.message });
         });
 });
+
 recommendationRouter.post('/', checkSchema(recommendationValidationSchema), validationErrorsMiddleware, (req, res) => {
     createRecomendation(req.body).then((recommendationDto) => res.status(201).json(recommendationDto));
 });
+
 recommendationRouter.get('/:id', (req, res) => {
     getRecomendation(req.params.id)
         .then((recommendationDto) => res.json(recommendationDto))
