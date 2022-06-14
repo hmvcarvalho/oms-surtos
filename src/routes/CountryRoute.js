@@ -1,8 +1,7 @@
 const { Router } = require('express');
 const countryModel = require('../models/country');
-
 const geoZoneModel = require('../models/geoZone');
-
+const outbreaksModel = require('../models/outbreaks');
 const { listRecomemendationsByCountry } = require('../services/recommendationService');
 
 const countryDTO = require('../models/dtos/country/countryDTO');
@@ -11,6 +10,7 @@ const countryRouter = Router();
 const { countryValidatorSchema } = require('../validators/countryValidator');
 const validationErrorsMiddleware = require('../middlewares/validationErrorsMiddleware');
 const { checkSchema } = require('express-validator');
+const { find } = require('../models/country');
 
 // //create country
 countryRouter.post('/', checkSchema(countryValidatorSchema), validationErrorsMiddleware, (req, res) => {
@@ -83,10 +83,28 @@ countryRouter.get('/:code', (req, res) => {
         });
 });
 
-
 //get recs by country by id
-app.get('/:id/recomendacoes', (req, res) => {
+countryRouter.get('/:id/recomendacoes', (req, res) => {
     listRecomemendationsByCountry(req.params.id).then((recommendations) => res.json(recommendations));
+});
+
+//api/country/{code}/outbreaks - o Obter os surtos ativos para o país referido
+countryRouter.get('/:code/outbreaks', (req, res) => {
+    countryModel
+        .findOne({ code: req.params.code })
+        .then(({ geoZoneCode }) => {
+            outbreaksModel
+                .find({ geoCode: geoZoneCode })
+                .then((countriesList) => {
+                    res.json(countriesList);
+                })
+                .catch((error) => {
+                    res.status(400).json(error);
+                });
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
 });
 
 module.exports = countryRouter;
