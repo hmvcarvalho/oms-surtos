@@ -3,6 +3,7 @@ const virusModel = require('../models/virus');
 const outbreaksModel = require('../models/outbreaks');
 const { checkSchema } = require('express-validator');
 const { virusValidationSchema } = require('../validators/virusValidator');
+const outbreakVirusDTO = require('../models/dtos/outbreakVirusDTO');
 
 const validationErrorsMiddleware = require('../middlewares/validationErrorsMiddleware');
 
@@ -33,15 +34,30 @@ virusRouter.post('/', checkSchema(virusValidationSchema), validationErrorsMiddle
 });
 
 // get all the outbreak's of a virus
+// DTO
 virusRouter.get('/:id/outbreaks', (req, res) => {
     outbreaksModel
         .find({ virusCode: req.params.id })
-        .then((listaSurtos) => {
-            res.json(listaSurtos);
+        .then((outbreakList) => {
+            const outbreakVirusListDTO = outbreakList.map((outbreakVirus) => {
+                return new outbreakVirusDTO(outbreakVirus);
+            });
+            res.status(200).json(outbreakVirusListDTO);
         })
         .catch((err) => {
             res.status(400).json(err);
         });
 });
+
+// virusRouter.get('/:id/outbreaks', (req, res) => {
+//     outbreaksModel
+//         .find({ virusCode: req.params.id })
+//         .then((listaSurtos) => {
+//             res.json(listaSurtos);
+//         })
+//         .catch((err) => {
+//             res.status(400).json(err);
+//         });
+// });
 
 module.exports = virusRouter;
