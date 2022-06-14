@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const countryModel = require('../models/country');
+const { listRecomemendationsByCountry } = require('../services/recommendationService');
 const countryDTO = require('../models/dtos/country/countryDTO');
 const countryRouter = Router();
 
@@ -34,8 +35,8 @@ countryRouter.get('/', (req, res) => {
 countryRouter.put('/:code', (req, res) => {
     countryModel
         .findOneAndUpdate({ code: req.params.code }, { ...req.body }, { new: true })
-        .then((updatedCountry)=>{
-            res.json({msg : 'Country data updated with success'});
+        .then((updatedCountry) => {
+            res.json({ msg: 'Country data updated with success' });
         })
         .catch((error) => {
             res.status(400).json(error);
@@ -43,29 +44,33 @@ countryRouter.put('/:code', (req, res) => {
 });
 
 //delete country
-countryRouter.delete('/:code', (req, res)=>{
+countryRouter.delete('/:code', (req, res) => {
     countryModel
-    .findOneAndDelete({ code: req.params.code })
-    .then((deletedCountry)=>{
-        res.json({msg : 'Country data deleted with success'});
-    })
-    .catch((error) => {
-        res.status(400).json(error);
-    });
+        .findOneAndDelete({ code: req.params.code })
+        .then((deletedCountry) => {
+            res.json({ msg: 'Country data deleted with success' });
+        })
+        .catch((error) => {
+            res.status(400).json(error);
+        });
 });
 
 //get country by id
-countryRouter.get('/:code', (req, res)=>{
+countryRouter.get('/:code', (req, res) => {
     countryModel
-    .findOne({ code: req.params.code })
-    .then((country)=>{
-        const theCountryDTO = new countryDTO(country);
-        res.json(theCountryDTO);
-    })
-    .catch(
-        (error) => {
+        .findOne({ code: req.params.code })
+        .then((country) => {
+            const theCountryDTO = new countryDTO(country);
+            res.json(theCountryDTO);
+        })
+        .catch((error) => {
             res.status(400).json(error);
         });
+});
+
+//get recs by country by id
+app.get('/:id/recomendacoes', (req, res) => {
+    listRecomemendationsByCountry(req.params.id).then((recommendations) => res.json(recommendations));
 });
 
 module.exports = countryRouter;
