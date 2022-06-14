@@ -1,9 +1,9 @@
 const { RecommendationModel } = require('../models/recommendationModel');
-const CountryModel = require('../models/countryModel');
+const CountryModel = require('../models/country');
 
 function listRecomendations() {
     return RecommendationModel.find().then((recommendations) => {
-        return recommendations.map((rec) => rec.populate('geoZoneCode'));
+        return Promise.all(recommendations.map((r)=> r.populate('geoZoneCode')));
     });
 }
 
@@ -15,7 +15,7 @@ function createRecomendation(recommendationReq) {
 
 function getRecomendation(id) {
     return RecommendationModel.findById(id).then((recommendation) => {
-        return recommendation.populate('geoZoneCode');
+        return recommendation;
     });
 }
 

@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/recommendation', recommendationRouter);
+app.use('/api/recommendation', recommendationRouter);
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 
