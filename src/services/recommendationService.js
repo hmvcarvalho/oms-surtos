@@ -3,7 +3,7 @@ const CountryModel = require('../models/countryModel');
 
 function listRecomendations() {
     return RecommendationModel.find().then((recommendations) => {
-        return recommendations;
+        return recommendations.map((rec) => rec.populate('geoZoneCode'));
     });
 }
 
@@ -15,7 +15,7 @@ function createRecomendation(recommendationReq) {
 
 function getRecomendation(id) {
     return RecommendationModel.findById(id).then((recommendation) => {
-        return recommendation;
+        return recommendation.populate('geoZoneCode');
     });
 }
 
