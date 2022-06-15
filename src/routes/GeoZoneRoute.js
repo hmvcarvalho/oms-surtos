@@ -1,36 +1,22 @@
 const { Router } = require('express');
-const geoZoneModel = require('../models/geoZone');
-const geoZoneDTO = require('../models/dtos/geoZone/geoZoneDTO');
 const geoZoneRouter = Router();
 const { geoZoneValidatorSchema } = require('../validators/geoZoneValidator');
 const validationErrorsMiddleware = require('../middlewares/validationErrorsMiddleware');
 const { checkSchema } = require('express-validator');
+const { listGeoZones, createGeoZone } = require('../services/geoZoneService');
 
 // //create geoZone
 geoZoneRouter.post('/', checkSchema(geoZoneValidatorSchema), validationErrorsMiddleware, (req, res) => {
-    geoZoneModel
-        .create({ ...req.body })
-        .then(() => {
-            res.json({ msg: 'GeoZone data inserted with success' });
-        })
-        .catch((error) => {
-            res.status(400).json(error);
-        });
+    createGeoZone({ ...req.body })
+        .then(() => res.status(201).json({ msg: 'GeoZone created with success' }))
+        .catch((error) => res.status(400).json(error));
 });
 
 //get all geoZones
 geoZoneRouter.get('/', (req, res) => {
-    geoZoneModel
-        .find({})
-        .then((geoZoneList) => {
-            const geoZoneListDTO = geoZoneList.map((geoZone) => {
-                return new geoZoneDTO(geoZone);
-            });
-            res.json(geoZoneListDTO);
-        })
-        .catch((error) => {
-            res.status(400).json(error);
-        });
+    listGeoZones()
+        .then((geoZonesList) => res.json(geoZonesList))
+        .catch((error) => res.status(400).json(error));
 });
 
 module.exports = geoZoneRouter;
