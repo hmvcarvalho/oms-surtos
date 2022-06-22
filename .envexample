@@ -1,0 +1,4 @@
+MONGO_URI="mongodb+srv://"
+MONGO_DATABASE = ""
+MONGO_OPTIONS = "?retryWrites=true&w=majority"
+PORT=3000
