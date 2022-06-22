@@ -6,11 +6,12 @@ import Routes from './routes/Routes';
 export class App {
     public app: Application = express();
     public routes: Routes = new Routes();
-    public mongoUrl: string = `${process.env.MONGO_URI}${
+    public mongoUrl: string = `${process.env.MONGO_URI || ''}${
         process.env.MONGO_DATABASE || ''
     }${process.env.MONGO_OPTIONS || ''}`;
 
     constructor() {
+        console.log(this.mongoUrl);
         this.config();
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
@@ -23,7 +24,10 @@ export class App {
 
     private mongoSetup(): void {
         mongoose.Promise = global.Promise;
-        mongoose.connect(this.mongoUrl);
+        mongoose.connect(this.mongoUrl).then(
+            () => console.log('connected to database'),
+            () => console.error('Connection failed')
+        );
     }
 }
 
