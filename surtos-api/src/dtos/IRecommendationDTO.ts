@@ -1,0 +1,3 @@
+interface IRecommendationDTO {}
+
+export { IRecommendationDTO };
