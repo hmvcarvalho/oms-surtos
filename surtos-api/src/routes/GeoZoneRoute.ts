@@ -6,5 +6,7 @@ export class GeoZoneRoute {
         private controller: GeoZoneController = new GeoZoneController()
     ) {}
 
-    routes(app: Router) {}
+    routes(app: Router) {
+        app.post('/api/geozone', this.controller.post);
+    }
 }
