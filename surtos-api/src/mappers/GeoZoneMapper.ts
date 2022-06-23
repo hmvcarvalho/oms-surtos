@@ -17,7 +17,9 @@ export class GeoZoneMapper {
         };
     }
 
-    public static toDomain(geoZone: GeoZone | IGeoZonePersistence): GeoZone {
+    public static toDomain(
+        geoZone: IGeoZoneDTO | IGeoZonePersistence
+    ): GeoZone {
         return GeoZone.createGeoZone(geoZone);
     }
 }

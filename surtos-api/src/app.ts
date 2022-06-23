@@ -6,9 +6,9 @@ import Routes from './routes/Routes';
 export class App {
     public app: Application = express();
     public routes: Routes = new Routes();
-    public mongoUrl: string = `${process.env.MONGO_URI || ''}${
-        process.env.MONGO_DATABASE || ''
-    }${process.env.MONGO_OPTIONS || ''}`;
+    public mongoUrl: string = `${process.env.MONGO_URI || ''}${process.env.MONGO_DATABASE || ''}${
+        process.env.MONGO_OPTIONS || ''
+    }`;
 
     constructor() {
         console.log(this.mongoUrl);
@@ -16,6 +16,7 @@ export class App {
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
         this.routes.geoZone.routes(this.app);
+        this.routes.country.routes(this.app);
     }
 
     private config(): void {

@@ -4,16 +4,12 @@ import { GeoZoneService } from '../services/GeoZoneService';
 import IGeoZoneController from './IGeoZoneController';
 
 export class GeoZoneController implements IGeoZoneController {
-    constructor(
-        private geoZoneService: GeoZoneService = new GeoZoneService()
-    ) {}
+    constructor(private geoZoneService: GeoZoneService = new GeoZoneService()) {}
     post = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const geoZoneDto: IGeoZoneDTO = req.body;
-            const newGeoZone = await this.geoZoneService.createGeoZone(
-                geoZoneDto
-            );
-            res.status(200).send(newGeoZone);
+            const newGeoZone = await this.geoZoneService.createGeoZone(geoZoneDto);
+            res.status(200).send('Success creating country');
         } catch (error) {
             res.status(400).send(error);
         }

@@ -12,8 +12,13 @@ export class MongoGeoZoneRepository implements IGeoZoneRepository {
         return GeoZoneMapper.toDomain(newGeoZonePers);
     };
 
+    findById = async (geoZoneCode: string) => {
+        const theGeoZone = await geoZoneSchema.findOne({ geoZoneCode: geoZoneCode });
+        if (theGeoZone === null) return null;
+        return GeoZoneMapper.toDomain(theGeoZone);
+    };
+
     // update = async (code: string, geoZone: GeoZone) => {return {} as GeoZone;};
     // findAll = async () => {return [];};
-    // findById = async (code: string) => {return [];};
     // deleteById = async (code: string) => {return true;};
 }
