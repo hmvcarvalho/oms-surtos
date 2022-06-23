@@ -27,6 +27,7 @@
     "prettier": {
         "tabWidth": 4,
         "singleQuote": true,
-        "semi": true
+        "semi": true,
+        "printWidth": 120
     }
 }
