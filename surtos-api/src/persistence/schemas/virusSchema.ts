@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
 import { IVirusPersistence } from '../../dataSchema/IVirusPresistence';
 
 const VirusSchema = new Schema({
