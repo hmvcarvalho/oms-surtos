@@ -11,7 +11,6 @@ export class App {
     }`;
 
     constructor() {
-        console.log(this.mongoUrl);
         this.config();
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
@@ -28,7 +27,7 @@ export class App {
     private mongoSetup(): void {
         mongoose.Promise = global.Promise;
         mongoose.connect(this.mongoUrl).then(
-            () => console.log('connected to database'),
+            () => console.log('Connected to database'),
             () => console.error('Connection failed')
         );
     }
