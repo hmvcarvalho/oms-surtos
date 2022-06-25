@@ -5,7 +5,7 @@ import RecommendationService from '../services/RecommendationService';
 import { IRecommendationController } from './IRecommendationController';
 
 export class RecommendationController implements IRecommendationController {
-    constructor(private recommendationService: RecommendationService = new RecommendationService()) {}
+    constructor(private recommendationService: IRecommendationService = new RecommendationService()) {}
 
     post = async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -58,4 +58,5 @@ export class RecommendationController implements IRecommendationController {
             res.status(400).send(JSON.stringify(error));
         }
     };
+
 }

@@ -1,9 +1,9 @@
-import { Schema, model, Types } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const CountrySchema = new Schema({
     countryCode: { type: String, require: true, index: true },
     countryName: { type: String, require: true, unique: true },
-    geoZone: { type: Types.ObjectId, require: true, ref: 'GeoZone' },
+    geoZoneCode: { type: String, require: true },
 });
 
 export default model('Country', CountrySchema);
