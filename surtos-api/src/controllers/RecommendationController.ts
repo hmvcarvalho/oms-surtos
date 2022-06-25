@@ -6,7 +6,7 @@ export class RecommendationController {
         private recommendationService: RecommendationService = new RecommendationService()
     ) {}
 
-    post = (req: Request, res: Response, next: NextFunction) => {};
+    post = async (req: Request, res: Response, next: NextFunction) => {};
     put = (req: Request, res: Response, next: NextFunction) => {};
     delete = (req: Request, res: Response, next: NextFunction) => {};
     get = (req: Request, res: Response, next: NextFunction) => {};

@@ -17,6 +17,7 @@ export class App {
         this.routes.recommendation.routes(this.app);
         this.routes.geoZone.routes(this.app);
         this.routes.country.routes(this.app);
+        this.routes.virus.routes(this.app);
     }
 
     private config(): void {
