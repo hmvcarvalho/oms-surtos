@@ -2,8 +2,9 @@ import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakMapper } from '../mappers/OutbreakMapper';
 import IOutbreakRepository from '../repository/IOutbreakRepository';
 import { OutbreakRepositoryFactory } from '../repository/OutbreakRepositoryFactory';
+import { IOutbreakService } from './IOutbreakService';
 
-export class OutbreakService {
+class OutbreakService implements IOutbreakService {
     constructor(
         private outbreakRepository: IOutbreakRepository = OutbreakRepositoryFactory.outbreakRepository()
     ) {}
@@ -39,3 +40,5 @@ export class OutbreakService {
         return result.map((out) => OutbreakMapper.toDTO(out));
     }
 }
+
+export { OutbreakService };

@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakService } from '../services/OutbreakService';
-
-export class OutbreakController {
+import IOutbreakController from './IOutbreakController';
+export class OutbreakController implements IOutbreakController {
     constructor(
         private outbreakService: OutbreakService = new OutbreakService()
     ) {}
@@ -19,7 +19,19 @@ export class OutbreakController {
         }
     };
 
-    putOutbreak = (req: Request, res: Response, next: NextFunction) => {};
+    putOutbreak = async (req: Request, res: Response, next: NextFunction) => {
+        const outbreakDto: IOutbreakDTO = req.body;
+        try {
+            let result = await this.outbreakService.updateOutbreak(
+                outbreakDto.virusCode,
+                outbreakDto.geoZoneCode,
+                outbreakDto.endDate
+            );
+            res.status(201).send(result);
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    };
 
     getOutbreaksByVirusCode = async (
         req: Request,
