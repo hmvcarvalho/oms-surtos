@@ -6,16 +6,18 @@ import Routes from './routes/Routes';
 export class App {
     public app: Application = express();
     public routes: Routes = new Routes();
-    public mongoUrl: string = `${process.env.MONGO_URI || ''}${
-        process.env.MONGO_DATABASE || ''
-    }${process.env.MONGO_OPTIONS || ''}`;
+    public mongoUrl: string = `${process.env.MONGO_URI || ''}${process.env.MONGO_DATABASE || ''}${
+        process.env.MONGO_OPTIONS || ''
+    }`;
 
     constructor() {
-        console.log(this.mongoUrl);
         this.config();
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
         this.routes.outbreak.routes(this.app);
+        this.routes.geoZone.routes(this.app);
+        this.routes.country.routes(this.app);
+        this.routes.virus.routes(this.app);
     }
 
     private config(): void {
@@ -26,7 +28,7 @@ export class App {
     private mongoSetup(): void {
         mongoose.Promise = global.Promise;
         mongoose.connect(this.mongoUrl).then(
-            () => console.log('connected to database'),
+            () => console.log('Connected to database'),
             () => console.error('Connection failed')
         );
     }
