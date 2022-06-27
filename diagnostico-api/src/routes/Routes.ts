@@ -1,10 +1,12 @@
+import { DoctorRoute } from "./DoctorRoute";
+
 class Routes {
-  // private _recommendation: RecommendationRoute;
-  // constructor() {
-  //     this._recommendation = new RecommendationRoute();
-  // }
-  // get recommendation(): RecommendationRoute {
-  //     return this._recommendation;
-  // }
+  private _doctor: DoctorRoute;
+  constructor() {
+    this._doctor = new DoctorRoute();
+  }
+  get doctor(): DoctorRoute {
+    return this._doctor;
+  }
 }
 export default Routes;
