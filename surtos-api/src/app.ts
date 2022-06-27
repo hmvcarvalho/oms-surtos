@@ -14,6 +14,7 @@ export class App {
         this.config();
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
+        this.routes.outbreak.routes(this.app);
         this.routes.geoZone.routes(this.app);
         this.routes.country.routes(this.app);
         this.routes.virus.routes(this.app);
