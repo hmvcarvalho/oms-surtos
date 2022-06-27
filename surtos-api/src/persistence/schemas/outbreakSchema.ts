@@ -1,19 +1,14 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import { Schema, model, Types, Document } from 'mongoose';
+import { IOutbreakPersistence } from '../../dataSchema/IOutbreakPersistence';
 
 const OutbreakSchema = new Schema({
+    virusCode: { type: String, required: true },
+    geoZoneCode: { type: String, required: true },
     detDate: { type: Date, required: true }, // VALIDAR detDate como anterior
-    endDate: { type: Date }, // a endDate
-    virus: {
-        type: Schema.Types.ObjectId,
-        ref: 'Virus',
-        required: true,
-    },
-    geoZone: {
-        type: Schema.Types.ObjectId,
-        ref: 'GeoZone',
-        required: true,
-    },
+    endDate: { type: Date }, // à endDate
 });
 
-module.exports = mongoose.model('Outbreaks', OutbreakSchema);
+export default model<Document & IOutbreakPersistence>(
+    'Outbreak',
+    OutbreakSchema
+);
