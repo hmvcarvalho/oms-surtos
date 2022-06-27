@@ -11,10 +11,10 @@ export class App {
     }`;
 
     constructor() {
-        console.log(this.mongoUrl);
         this.config();
         this.mongoSetup();
         this.routes.recommendation.routes(this.app);
+        this.routes.outbreak.routes(this.app);
         this.routes.geoZone.routes(this.app);
         this.routes.country.routes(this.app);
         this.routes.virus.routes(this.app);
@@ -28,7 +28,7 @@ export class App {
     private mongoSetup(): void {
         mongoose.Promise = global.Promise;
         mongoose.connect(this.mongoUrl).then(
-            () => console.log('connected to database'),
+            () => console.log('Connected to database'),
             () => console.error('Connection failed')
         );
     }
