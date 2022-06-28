@@ -5,9 +5,7 @@ import { OutbreakRepositoryFactory } from '../repository/OutbreakRepositoryFacto
 import { IOutbreakService } from './IOutbreakService';
 
 class OutbreakService implements IOutbreakService {
-    constructor(
-        private outbreakRepository: IOutbreakRepository = OutbreakRepositoryFactory.outbreakRepository()
-    ) {}
+    constructor(private outbreakRepository: IOutbreakRepository = OutbreakRepositoryFactory.outbreakRepository()) {}
 
     async createOutbreak(recDto: IOutbreakDTO): Promise<IOutbreakDTO> {
         // converter o argumento recDto para dominio
@@ -18,17 +16,9 @@ class OutbreakService implements IOutbreakService {
         return OutbreakMapper.toDTO(result);
     }
 
-    async updateOutbreak(
-        virusCode: string,
-        geoZoneCode: string,
-        endDate: Date
-    ): Promise<IOutbreakDTO> {
+    async updateOutbreak(virusCode: string, geoZoneCode: string, endDate: Date): Promise<IOutbreakDTO> {
         // chamar o repositorio para criar na bd (await)
-        const result = await this.outbreakRepository.update(
-            virusCode,
-            geoZoneCode,
-            endDate
-        );
+        const result = await this.outbreakRepository.update(virusCode, geoZoneCode, endDate);
         // converter para DTO e retornar
         return OutbreakMapper.toDTO(result);
     }

@@ -4,9 +4,7 @@ import IGeoZoneService from './IGeoZoneService';
 import { IGeoZoneDTO } from '../dtos/IGeoZoneDTO';
 import { GeoZoneMapper } from '../mappers/GeoZoneMapper';
 export class GeoZoneService implements IGeoZoneService {
-    constructor(
-        private geoZoneRepository: IGeoZoneRepository = GeoZoneRepositoryFactory.geoZoneRepository()
-    ) {}
+    constructor(private geoZoneRepository: IGeoZoneRepository = GeoZoneRepositoryFactory.geoZoneRepository()) {}
 
     createGeoZone = async (geoZoneDto: IGeoZoneDTO) => {
         const geoZoneDomain = GeoZoneMapper.toDomain(geoZoneDto);

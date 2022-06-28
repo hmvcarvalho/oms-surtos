@@ -10,13 +10,7 @@ export class OutbreakRoute {
 
     routes(app: Router) {
         app.post('/api/outbreak', this.controller.postOutbreak);
-        app.put(
-            '/api/outbreak/:geoZoneCode/:virus',
-            this.controller.putOutbreak
-        );
-        app.get(
-            '/api/outbreak/virus/:virus',
-            this.controller.getOutbreaksByVirusCode
-        );
+        app.put('/api/outbreak/:geoZoneCode/:virus', this.controller.putOutbreak);
+        app.get('/api/outbreak/virus/:virus', this.controller.getOutbreaksByVirusCode);
     }
 }
