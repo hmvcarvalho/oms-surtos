@@ -7,9 +7,7 @@ export class MongoOutbreakRepository implements IOutbreakRepository {
     constructor() {}
 
     async create(outbreak: Outbreak): Promise<Outbreak> {
-        console.log(
-            'MongoOutbreakRepository: save: ' + JSON.stringify(outbreak)
-        );
+        console.log('MongoOutbreakRepository: save: ' + JSON.stringify(outbreak));
         const outbreakPersistence = OutbreakMapper.toPersistence(outbreak);
 
         const outb = await OutbreakSchema.create(outbreakPersistence);
@@ -18,21 +16,10 @@ export class MongoOutbreakRepository implements IOutbreakRepository {
         return OutbreakMapper.toDomain(outbreakPersistence);
     }
 
-    async update(
-        virusCode: string,
-        geoZoneCode: string,
-        endDate: Date
-    ): Promise<Outbreak> {
-        console.log(
-            'MongoOutbreakRepository: save: ' +
-                JSON.stringify({ virusCode, geoZoneCode, endDate })
-        );
+    async update(virusCode: string, geoZoneCode: string, endDate: Date): Promise<Outbreak> {
+        console.log('MongoOutbreakRepository: save: ' + JSON.stringify({ virusCode, geoZoneCode, endDate }));
 
-        const outb = await OutbreakSchema.findOneAndUpdate(
-            { virusCode, geoZoneCode },
-            { endDate },
-            { new: true }
-        );
+        const outb = await OutbreakSchema.findOneAndUpdate({ virusCode, geoZoneCode }, { endDate }, { new: true });
 
         if (!outb) {
             throw new Error('Outbreak not found!');
@@ -42,12 +29,16 @@ export class MongoOutbreakRepository implements IOutbreakRepository {
     }
 
     async findByVirusCode(virusCode: string): Promise<Outbreak[]> {
-        console.log(
-            'MongoOutbreakRepository: findById: ' + JSON.stringify(virusCode)
-        );
+        console.log('MongoOutbreakRepository: findById: ' + JSON.stringify(virusCode));
         // filtrar todos os outbreaks por "virus"
         let result = await OutbreakSchema.find({ virusCode });
         // converter o outbreak de persistence em dominio
+        return result.map((out) => OutbreakMapper.toDomain(out));
+    }
+
+    async findByGeoZone(geoZoneCode: string): Promise<Outbreak[]> {
+        console.log('MongoOutbreakRepository: findByGeoZoneCode: ' + JSON.stringify(geoZoneCode));
+        let result = await OutbreakSchema.find({ geoZoneCode });
         return result.map((out) => OutbreakMapper.toDomain(out));
     }
 }

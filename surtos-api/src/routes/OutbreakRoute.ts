@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { OutbreakController } from '../controllers/OutbreakController';
-
 export class OutbreakRoute {
     private controller: OutbreakController;
 
@@ -10,13 +9,8 @@ export class OutbreakRoute {
 
     routes(app: Router) {
         app.post('/api/outbreak', this.controller.postOutbreak);
-        app.put(
-            '/api/outbreak/:geoZoneCode/:virus',
-            this.controller.putOutbreak
-        );
-        app.get(
-            '/api/outbreak/virus/:virus',
-            this.controller.getOutbreaksByVirusCode
-        );
+        app.put('/api/outbreak/:geoZoneCode/:virus', this.controller.putOutbreak);
+        app.get('/api/outbreak/virus/:virus', this.controller.getOutbreaksByVirusCode);
+        app.get('/api/country/:country/outbreak', this.controller.getOutbreaksByCountry);
     }
 }
