@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { IRecommendationDTO } from '../dtos/IRecommendationDTO';
 import { IRecommendationService } from '../services/IRecommendationService';
 import RecommendationService from '../services/RecommendationService';
-import { IRecommendationController } from './IRecommendationController';
+import { IRecommendationController } from './interfaces/IRecommendationController';
 
 export class RecommendationController implements IRecommendationController {
     constructor(private recommendationService: IRecommendationService = new RecommendationService()) {}
@@ -58,5 +58,4 @@ export class RecommendationController implements IRecommendationController {
             res.status(400).send(JSON.stringify(error));
         }
     };
-
 }

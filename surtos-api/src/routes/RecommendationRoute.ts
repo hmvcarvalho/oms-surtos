@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { IRecommendationController } from '../controllers/IRecommendationController';
+import { IRecommendationController } from '../controllers/interfaces/IRecommendationController';
 import { RecommendationController } from '../controllers/RecommendationController';
 
 export class RecommendationRoute {

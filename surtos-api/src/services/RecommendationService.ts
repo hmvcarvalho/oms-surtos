@@ -39,7 +39,8 @@ export default class RecommendationService implements IRecommendationService {
     }
 
     async getRecommendationsByCountryCode(countryCode: string): Promise<IRecommendationDTO[]> {
-        const recsDomList = await this.recommendationRepository.findByCountryCode(countryCode);
+        const { geoZoneCode } = await this.countryRepository.findById(countryCode);
+        const recsDomList = await this.recommendationRepository.findAllByGeoZoneCode(geoZoneCode);
         return recsDomList.map((rec) => RecommendationMapper.toDto(rec));
     }
 }

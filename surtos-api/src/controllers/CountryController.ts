@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import ICountryController from './ICountryController';
+import ICountryController from './interfaces/ICountryController';
 import { CountryService } from '../services/CountryService';
 import { ICountryDTO } from '../dtos/ICountryDTO';
 import { IRecommendationService } from '../services/IRecommendationService';

@@ -49,4 +49,11 @@ export class MongoRecommendationRepository implements IRecommendationRepository 
         const recPerList = await this.recommendationModel.find();
         return recPerList.map((rec) => RecommendationMapper.toDomain(rec));
     };
+
+    findAllByGeoZoneCode = async (geoZoneCode: string) => {
+        const recPerList = await this.recommendationModel.find({
+            geoZoneCode,
+        });
+        return recPerList.map((rec) => RecommendationMapper.toDomain(rec));
+    };
 }

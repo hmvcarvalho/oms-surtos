@@ -5,4 +5,5 @@ export default interface IRecommendationRepository {
     findAll: () => Promise<Recommendation[]>;
     findById: (id: string) => Promise<any>;
     deleteById: (id: string) => Promise<boolean>;
+    findAllByGeoZoneCode(geoZoneCode: string): Promise<Recommendation[]>;
 }
