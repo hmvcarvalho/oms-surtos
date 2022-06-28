@@ -4,10 +4,11 @@ import { CountryService } from '../services/CountryService';
 import { ICountryDTO } from '../dtos/ICountryDTO';
 import { IRecommendationService } from '../services/interfaces/IRecommendationService';
 import RecommendationService from '../services/RecommendationService';
+import ICountryService from '../services/interfaces/ICountryService';
 
 class CountryController implements ICountryController {
     constructor(
-        private countryService: CountryService = new CountryService(),
+        private countryService: ICountryService = new CountryService(),
         private recommendationService: IRecommendationService = new RecommendationService()
     ) {}
 
