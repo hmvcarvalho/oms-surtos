@@ -9,4 +9,11 @@ export class MongoCountryRepository {
         const newCountryPers = await countrySchema.create(countryPers);
         return CountryMapper.toDomain(newCountryPers);
     };
+    findById = async (countryCode: string): Promise<Country> => {
+        const country = await countrySchema.findOne({ countryCode });
+        if (!country) {
+            throw new Error("Country doesn't exist");
+        }
+        return CountryMapper.toDomain(country);
+    };
 }

@@ -1,11 +1,16 @@
 import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakMapper } from '../mappers/OutbreakMapper';
+import { CountryRepositoryFactory } from '../repository/CountryRepositoryFactory';
+import ICountryRepository from '../repository/ICountryRepository';
 import IOutbreakRepository from '../repository/IOutbreakRepository';
 import { OutbreakRepositoryFactory } from '../repository/OutbreakRepositoryFactory';
 import { IOutbreakService } from './IOutbreakService';
 
 class OutbreakService implements IOutbreakService {
-    constructor(private outbreakRepository: IOutbreakRepository = OutbreakRepositoryFactory.outbreakRepository()) {}
+    constructor(
+        private outbreakRepository: IOutbreakRepository = OutbreakRepositoryFactory.outbreakRepository(),
+        private countryRepository: ICountryRepository = CountryRepositoryFactory.countryRepository()
+    ) {}
 
     async createOutbreak(recDto: IOutbreakDTO): Promise<IOutbreakDTO> {
         // converter o argumento recDto para dominio
@@ -27,6 +32,12 @@ class OutbreakService implements IOutbreakService {
         // chamar repositorio filtrado por "virus" (await)
         const result = await this.outbreakRepository.findByVirusCode(virusCode);
         // mapear o array de dominio para dto e retornar
+        return result.map((out) => OutbreakMapper.toDTO(out));
+    }
+
+    async getOutbreaksByCountry(countryCode: string): Promise<IOutbreakDTO[]> {
+        const country = await this.countryRepository.findById(countryCode);
+        const result = await this.outbreakRepository.findByGeoZone(country.geoZoneCode);
         return result.map((out) => OutbreakMapper.toDTO(out));
     }
 }
