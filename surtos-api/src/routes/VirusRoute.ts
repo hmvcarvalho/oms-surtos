@@ -2,11 +2,7 @@ import { Router } from 'express';
 import { VirusController } from '../controllers/VirusController';
 
 export class VirusRoute {
-    private controller: VirusController;
-
-    constructor() {
-        this.controller = new VirusController();
-    }
+    constructor(private controller = new VirusController()) {}
 
     routes(app: Router) {
         app.post('/api/virus', this.controller.post);

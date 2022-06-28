@@ -1,4 +1,4 @@
-import { IVirusDTO } from '../dtos/IVirusDTO';
+import { IVirusDTO } from '../../dtos/IVirusDTO';
 export default interface IVirusService {
     getAllVirus(): Promise<IVirusDTO>;
     getVirusById(x: IVirusDTO): Promise<IVirusDTO>;

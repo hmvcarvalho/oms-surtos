@@ -18,6 +18,7 @@ export class App {
         this.routes.geoZone.routes(this.app);
         this.routes.country.routes(this.app);
         this.routes.virus.routes(this.app);
+        console.log(this.mongoUrl);
     }
 
     private config(): void {

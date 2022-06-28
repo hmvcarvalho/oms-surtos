@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakService } from '../services/OutbreakService';
-import IOutbreakController from './IOutbreakController';
+import IOutbreakController from './interfaces/IOutbreakController';
 export class OutbreakController implements IOutbreakController {
     constructor(private outbreakService: OutbreakService = new OutbreakService()) {}
 

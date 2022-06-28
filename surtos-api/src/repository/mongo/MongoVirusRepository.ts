@@ -2,7 +2,7 @@ import { IVirusPersistence } from '../../dataSchema/IVirusPresistence';
 import { Virus } from '../../domain/Virus';
 import { VirusMapper } from '../../mappers/VirusMapper';
 import virusSchema from '../../persistence/schemas/virusSchema';
-import IVirusRepository from '../IVirusRepository';
+import IVirusRepository from '../interfaces/IVirusRepository';
 
 export class MongoVirusRepository implements IVirusRepository {
     create = async (virus: Virus): Promise<Virus> => {
@@ -10,12 +10,9 @@ export class MongoVirusRepository implements IVirusRepository {
 
         try {
             // convert to persistence
-            let virusPersistence: IVirusPersistence =
-                VirusMapper.toPersistence(virus);
+            let virusPersistence: IVirusPersistence = VirusMapper.toPersistence(virus);
 
-            let result: IVirusPersistence = await virusSchema.create(
-                virusPersistence
-            );
+            let result: IVirusPersistence = await virusSchema.create(virusPersistence);
             return VirusMapper.toDomain(result);
         } catch (error) {
             throw error;

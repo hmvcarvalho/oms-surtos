@@ -1,4 +1,4 @@
-import IVirusRepository from '../repository/IVirusRepository';
+import IVirusRepository from '../repository/interfaces/IVirusRepository';
 import { VirusRepositoryFactory } from '../repository/VirusRepositoryFactory';
 import { Virus } from '../domain/Virus';
 import { IVirusDTO } from '../dtos/IVirusDTO';
@@ -15,9 +15,7 @@ export class VirusService {
         console.log('VirusService: getAllVirus');
 
         let result: Virus[] = await this.repository.findAll();
-        let virusList: IVirusDTO[] = result.map((virusList) =>
-            VirusMapper.toDto(virusList)
-        );
+        let virusList: IVirusDTO[] = result.map((virusList) => VirusMapper.toDto(virusList));
         return virusList;
     }
 

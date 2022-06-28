@@ -1,4 +1,4 @@
-import { Outbreak } from '../domain/Outbreak';
+import { Outbreak } from '../../domain/Outbreak';
 
 export default interface IOutbreakRepository {
     create: (outbreak: Outbreak) => Promise<Outbreak>;
