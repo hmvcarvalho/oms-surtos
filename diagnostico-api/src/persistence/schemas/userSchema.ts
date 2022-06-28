@@ -1,6 +1,6 @@
 import { Schema, model, SchemaOptions } from 'mongoose';
 
-const options: SchemaOptions = { discriminatorKey: 'User' };
+const options: SchemaOptions = { discriminatorKey: 'user' };
 
 const UserSchema = new Schema(
     {
