@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { IRecommendationDTO } from '../dtos/IRecommendationDTO';
-import { IRecommendationService } from '../services/IRecommendationService';
+import { IRecommendationService } from '../services/interfaces/IRecommendationService';
 import RecommendationService from '../services/RecommendationService';
 import { IRecommendationController } from './interfaces/IRecommendationController';
 

@@ -1,5 +1,5 @@
 import { Recommendation } from '../../domain/Recommendation';
-import IRecommendationRepository from '../IRecommendationRepository';
+import IRecommendationRepository from '../interfaces/IRecommendationRepository';
 import recommendationSchema from '../../persistence/schemas/recommendationSchema';
 import { RecommendationMapper } from '../../mappers/RecommendationMapper';
 

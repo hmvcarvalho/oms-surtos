@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import ICountryController from './interfaces/ICountryController';
 import { CountryService } from '../services/CountryService';
 import { ICountryDTO } from '../dtos/ICountryDTO';
-import { IRecommendationService } from '../services/IRecommendationService';
+import { IRecommendationService } from '../services/interfaces/IRecommendationService';
 import RecommendationService from '../services/RecommendationService';
 
 class CountryController implements ICountryController {

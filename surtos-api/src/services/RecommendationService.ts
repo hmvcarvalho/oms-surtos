@@ -1,10 +1,10 @@
 import { IRecommendationDTO } from '../dtos/IRecommendationDTO';
 import { RecommendationMapper } from '../mappers/RecommendationMapper';
 import { CountryRepositoryFactory } from '../repository/CountryRepositoryFactory';
-import ICountryRepository from '../repository/ICountryRepository';
-import IRecommendationRepository from '../repository/IRecommendationRepository';
+import ICountryRepository from '../repository/interfaces/ICountryRepository';
+import IRecommendationRepository from '../repository/interfaces/IRecommendationRepository';
 import { RecommendationRepositoryFactory } from '../repository/RecommendationRepositoryFactory';
-import { IRecommendationService } from './IRecommendationService';
+import { IRecommendationService } from './interfaces/IRecommendationService';
 
 export default class RecommendationService implements IRecommendationService {
     constructor(

@@ -1,4 +1,4 @@
-import { Recommendation } from '../domain/Recommendation';
+import { Recommendation } from '../../domain/Recommendation';
 
 export default interface IRecommendationRepository {
     save: (recommendation: Recommendation) => Promise<Recommendation>;

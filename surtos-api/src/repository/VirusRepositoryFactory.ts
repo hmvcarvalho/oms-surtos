@@ -1,4 +1,4 @@
-import IVirusRepository from './IVirusRepository';
+import IVirusRepository from './interfaces/IVirusRepository';
 import { datasource } from '../app';
 import { MongoVirusRepository } from './mongo/MongoVirusRepository';
 

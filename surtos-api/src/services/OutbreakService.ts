@@ -1,10 +1,10 @@
 import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakMapper } from '../mappers/OutbreakMapper';
 import { CountryRepositoryFactory } from '../repository/CountryRepositoryFactory';
-import ICountryRepository from '../repository/ICountryRepository';
-import IOutbreakRepository from '../repository/IOutbreakRepository';
+import ICountryRepository from '../repository/interfaces/ICountryRepository';
+import IOutbreakRepository from '../repository/interfaces/IOutbreakRepository';
 import { OutbreakRepositoryFactory } from '../repository/OutbreakRepositoryFactory';
-import { IOutbreakService } from './IOutbreakService';
+import { IOutbreakService } from './interfaces/IOutbreakService';
 
 class OutbreakService implements IOutbreakService {
     constructor(

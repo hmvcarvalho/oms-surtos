@@ -1,4 +1,4 @@
-import IOutbreakDTO from '../dtos/IOutbreakDTO';
+import IOutbreakDTO from '../../dtos/IOutbreakDTO';
 
 interface IOutbreakService {
     createOutbreak(recDto: IOutbreakDTO): Promise<IOutbreakDTO>;

@@ -1,4 +1,4 @@
-import { GeoZone } from '../domain/GeoZone';
+import { GeoZone } from '../../domain/GeoZone';
 
 export default interface IGeoZoneRepository {
     create: (geoZone: GeoZone) => Promise<GeoZone>;

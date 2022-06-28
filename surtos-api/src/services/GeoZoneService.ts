@@ -1,6 +1,6 @@
-import IGeoZoneRepository from '../repository/IGeoZoneRepository';
+import IGeoZoneRepository from '../repository/interfaces/IGeoZoneRepository';
 import { GeoZoneRepositoryFactory } from '../repository/GeoZoneRepositoryFactory';
-import IGeoZoneService from './IGeoZoneService';
+import IGeoZoneService from './interfaces/IGeoZoneService';
 import { IGeoZoneDTO } from '../dtos/IGeoZoneDTO';
 import { GeoZoneMapper } from '../mappers/GeoZoneMapper';
 export class GeoZoneService implements IGeoZoneService {
