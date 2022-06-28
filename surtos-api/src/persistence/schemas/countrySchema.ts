@@ -1,4 +1,5 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
+import ICountryPersistence from '../../dataSchema/ICountryPersistence';
 
 const CountrySchema = new Schema({
     countryCode: { type: String, require: true, index: true },
@@ -6,4 +7,4 @@ const CountrySchema = new Schema({
     geoZoneCode: { type: String, require: true },
 });
 
-export default model('Country', CountrySchema);
+export default model<ICountryPersistence & Document>('Country', CountrySchema);
