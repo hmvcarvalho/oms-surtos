@@ -8,19 +8,28 @@ export class MongoJokeRepository implements IJokeRepository {
 
     save = async (joke: JokeDomain) => {
         const jokePersistence = JokeMapper.toPersistence(joke);
-        const newJokePersistence = await jokeSchema.create(jokePersistence);
+        const newJokePersistence = await jokeSchema.findOneAndUpdate({ category: joke.category }, jokePersistence, {
+            new: true,
+            upsert: true,
+        });
         return JokeMapper.toDomain(newJokePersistence);
     };
 
     findAll = async () => {
-        return {} as JokeDomain[];
+        const jokePerList = await this.jokeModel.find();
+        return jokePerList.map((x) => JokeMapper.toDomain(x));
     };
 
-    findById = async (id: string) => {
-        return {} as JokeDomain;
+    findById = async (id: string): Promise<JokeDomain> => {
+        const jokePers = await this.jokeModel.findOne({ categoria: id });
+        if (jokePers === null) {
+            throw "Couldn't find";
+        } else {
+            return JokeMapper.toDomain(jokePers);
+        }
     };
 
     deleteById = async (id: string) => {
-        return {} as boolean;
+        return !!(await this.jokeModel.findOneAndDelete({ categoria: id }));
     };
 }
