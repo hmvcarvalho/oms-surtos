@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { IGeoZoneDTO } from '../dtos/IGeoZoneDTO';
 import { GeoZoneService } from '../services/GeoZoneService';
-import IGeoZoneController from './IGeoZoneController';
+import IGeoZoneController from './interfaces/IGeoZoneController';
 
 export class GeoZoneController implements IGeoZoneController {
     constructor(private geoZoneService: GeoZoneService = new GeoZoneService()) {}

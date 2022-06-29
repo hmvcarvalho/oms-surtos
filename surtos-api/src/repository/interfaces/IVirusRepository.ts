@@ -1,4 +1,4 @@
-import { Virus } from '../domain/Virus';
+import { Virus } from '../../domain/Virus';
 
 export default interface IVirusRepository {
     create: (virus: Virus) => Promise<Virus>;

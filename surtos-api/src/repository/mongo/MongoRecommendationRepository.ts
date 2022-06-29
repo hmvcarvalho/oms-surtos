@@ -1,5 +1,5 @@
 import { Recommendation } from '../../domain/Recommendation';
-import IRecommendationRepository from '../IRecommendationRepository';
+import IRecommendationRepository from '../interfaces/IRecommendationRepository';
 import recommendationSchema from '../../persistence/schemas/recommendationSchema';
 import { RecommendationMapper } from '../../mappers/RecommendationMapper';
 
@@ -47,6 +47,13 @@ export class MongoRecommendationRepository implements IRecommendationRepository 
 
     findAll = async () => {
         const recPerList = await this.recommendationModel.find();
+        return recPerList.map((rec) => RecommendationMapper.toDomain(rec));
+    };
+
+    findAllByGeoZoneCode = async (geoZoneCode: string) => {
+        const recPerList = await this.recommendationModel.find({
+            geoZoneCode,
+        });
         return recPerList.map((rec) => RecommendationMapper.toDomain(rec));
     };
 }

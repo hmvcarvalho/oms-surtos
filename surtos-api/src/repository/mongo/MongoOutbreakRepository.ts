@@ -1,7 +1,7 @@
 import { Outbreak } from '../../domain/Outbreak';
 import OutbreakSchema from '../../persistence/schemas/outbreakSchema';
 import { OutbreakMapper } from '../../mappers/OutbreakMapper';
-import IOutbreakRepository from '../IOutbreakRepository';
+import IOutbreakRepository from '../interfaces/IOutbreakRepository';
 
 export class MongoOutbreakRepository implements IOutbreakRepository {
     constructor() {}
