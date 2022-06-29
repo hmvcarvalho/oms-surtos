@@ -25,4 +25,16 @@ export abstract class UserMapper {
             dateOfBirth: user.dateOfBirth,
         };
     }
+
+    public static toDomain(user: IUserPersistence): User {
+        return {
+            username: user.username,
+            password: user.password,
+            email: user.email,
+            phone: user.phone,
+            address: user.address,
+            city: user.city,
+            dateOfBirth: user.dateOfBirth,
+        };
+    }
 }
