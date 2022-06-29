@@ -1,12 +1,16 @@
-import { DoctorRoute } from "./DoctorRoute";
+import { DoctorRoute } from './DoctorRoute';
+import { QuestionaryRoute } from './QuestionaryRoute';
 
 class Routes {
-  private _doctor: DoctorRoute;
-  constructor() {
-    this._doctor = new DoctorRoute();
-  }
-  get doctor(): DoctorRoute {
-    return this._doctor;
-  }
+    constructor(
+        private _doctor: DoctorRoute = new DoctorRoute(),
+        private _questionary: QuestionaryRoute = new QuestionaryRoute()
+    ) {}
+    get doctor(): DoctorRoute {
+        return this._doctor;
+    }
+    get questionary() {
+        return this._questionary;
+    }
 }
 export default Routes;

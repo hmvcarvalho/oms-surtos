@@ -1,5 +1,5 @@
 import { model, Schema, Document } from 'mongoose';
-import { IQuestionaryPersistance } from '../../dataSchema/IQuestionaryPersistence';
+import { IQuestionaryPersistance } from '../../dataSchema/IQuestionaryPersistance';
 
 const optionSchema = new Schema({
     description: { type: String, required: true },
@@ -16,6 +16,7 @@ const recommendationSchema = new Schema({
 });
 
 const questionarySchema = new Schema({
+    questionaryCode: { type: String, required: true },
     title: { type: String, required: true },
     description: String,
     questions: [{ type: questionSchema, required: true }],
@@ -25,4 +26,4 @@ const questionarySchema = new Schema({
 
 const QuestionaryModel = model<IQuestionaryPersistance & Document>('Questionary', questionarySchema);
 
-export { questionarySchema, QuestionaryModel };
+export { QuestionaryModel };

@@ -1,4 +1,4 @@
-import express, { Application } from 'express';
+import express, { Application, Response } from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import Routes from './routes/Routes';
@@ -15,6 +15,8 @@ export class App {
         this.config();
         this.mongoSetup();
         this.routes.doctor.routes(this.app);
+        this.routes.questionary.routes(this.app);
+        this.app.use('/api', (_, res: Response) => res.json({ message: 'Status up' }));
     }
 
     private config(): void {

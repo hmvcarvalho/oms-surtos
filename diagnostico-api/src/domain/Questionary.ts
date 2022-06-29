@@ -1,4 +1,4 @@
-import { IQuestionaryPersistance } from '../dataSchema/IQuestionaryPersistence';
+import { IQuestionaryPersistance } from '../dataSchema/IQuestionaryPersistance';
 import { IQuestionaryDTO } from '../dtos/IQuestionaryDTO';
 
 class QuestionOption {
@@ -7,7 +7,7 @@ class QuestionOption {
     }
 
     validate() {
-        if (!this.description || !this.value) throw 'Invalid Option';
+        if (!this.description || Number.isNaN(this.value)) throw 'Invalid Option';
     }
 }
 
