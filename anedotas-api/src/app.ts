@@ -14,7 +14,7 @@ export class App {
         console.log('BASE DE DADOS : ' + this.mongoUrl);
         this.config();
         this.mongoSetup();
-        this.routes.joke.routes(this.app);
+        this.routes.category.routes(this.app);
     }
 
     private config(): void {

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export default interface IJokeController {
+export default interface ICategoryController {
     post: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 
     put: (req: Request, res: Response, next: NextFunction) => Promise<void>;
