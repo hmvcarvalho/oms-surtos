@@ -15,6 +15,7 @@ export class App {
         this.config();
         this.mongoSetup();
         this.routes.doctor.routes(this.app);
+        this.routes.patient.routes(this.app);
     }
 
     private config(): void {
