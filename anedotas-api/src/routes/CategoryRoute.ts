@@ -11,5 +11,6 @@ export class CategoryRoute {
         app.get('/api/category/:id', this.controller.getById);
         app.delete('/api/category/:id', this.controller.delete);
         app.put('/api/category/:id', this.controller.put);
+        //app.get('/api/category/:id', this.controller.getAllJokes);
     }
 }
