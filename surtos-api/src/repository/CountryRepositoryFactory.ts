@@ -1,5 +1,5 @@
 import { datasource } from '../app';
-import ICountryRepository from './ICountryRepository';
+import ICountryRepository from './interfaces/ICountryRepository';
 import { MongoCountryRepository } from './mongo/MongoCountryRepository';
 
 export class CountryRepositoryFactory {

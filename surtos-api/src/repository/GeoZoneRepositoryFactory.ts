@@ -1,4 +1,4 @@
-import IGeoZoneRepository from './IGeoZoneRepository';
+import IGeoZoneRepository from './interfaces/IGeoZoneRepository';
 import { MongoGeoZoneRepository } from './mongo/MongoGeoZoneRepository';
 import { datasource } from '../app';
 

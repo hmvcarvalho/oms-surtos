@@ -1,18 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import IOutbreakDTO from '../dtos/IOutbreakDTO';
 import { OutbreakService } from '../services/OutbreakService';
-import IOutbreakController from './IOutbreakController';
+import IOutbreakController from './interfaces/IOutbreakController';
 export class OutbreakController implements IOutbreakController {
-    constructor(
-        private outbreakService: OutbreakService = new OutbreakService()
-    ) {}
+    constructor(private outbreakService: OutbreakService = new OutbreakService()) {}
 
     postOutbreak = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const outbreakDto: IOutbreakDTO = req.body;
-            const resOutbreakDto = await this.outbreakService.createOutbreak(
-                outbreakDto
-            );
+            const resOutbreakDto = await this.outbreakService.createOutbreak(outbreakDto);
             res.status(201).send(resOutbreakDto);
         } catch (error) {
             res.status(400).send(error);
@@ -33,16 +29,21 @@ export class OutbreakController implements IOutbreakController {
         }
     };
 
-    getOutbreaksByVirusCode = async (
-        req: Request,
-        res: Response,
-        next: NextFunction
-    ) => {
+    getOutbreaksByVirusCode = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            let result = await this.outbreakService.getOutbreaksByVirusCode(
-                req.params.virus
-            );
+            let result = await this.outbreakService.getOutbreaksByVirusCode(req.params.virus);
             res.json(result);
-        } catch (error) {}
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    };
+
+    getOutbreaksByCountry = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            let result = await this.outbreakService.getOutbreaksByCountry(req.params.country);
+            res.json(result);
+        } catch (error) {
+            res.status(400).send(error);
+        }
     };
 }

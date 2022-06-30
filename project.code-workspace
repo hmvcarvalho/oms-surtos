@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "surtos-api"
+	},
+	{
+		"path": "anedotas-api"
+	},
+	{
+		"path": "diagnostico-api"
+	}
+],
+  "settings": {}
+}

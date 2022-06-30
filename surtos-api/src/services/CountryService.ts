@@ -2,9 +2,9 @@ import { ICountryDTO } from '../dtos/ICountryDTO';
 import { CountryMapper } from '../mappers/CountryMapper';
 import { CountryRepositoryFactory } from '../repository/CountryRepositoryFactory';
 import { GeoZoneRepositoryFactory } from '../repository/GeoZoneRepositoryFactory';
-import ICountryRepository from '../repository/ICountryRepository';
-import IGeoZoneRepository from '../repository/IGeoZoneRepository';
-import ICountryService from './ICountryService';
+import ICountryRepository from '../repository/interfaces/ICountryRepository';
+import IGeoZoneRepository from '../repository/interfaces/IGeoZoneRepository';
+import ICountryService from './interfaces/ICountryService';
 
 class CountryService implements ICountryService {
     constructor(

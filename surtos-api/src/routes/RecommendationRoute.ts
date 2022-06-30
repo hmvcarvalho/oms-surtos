@@ -1,12 +1,9 @@
 import { Router } from 'express';
+import { IRecommendationController } from '../controllers/interfaces/IRecommendationController';
 import { RecommendationController } from '../controllers/RecommendationController';
 
 export class RecommendationRoute {
-    private controller: RecommendationController;
-
-    constructor() {
-        this.controller = new RecommendationController();
-    }
+    constructor(private controller: IRecommendationController = new RecommendationController()) {}
 
     routes(app: Router) {
         app.post('/api/recommendation', this.controller.post);

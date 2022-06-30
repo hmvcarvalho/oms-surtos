@@ -1,8 +1,9 @@
-import { Schema } from 'mongoose';
+import { Schema, Document } from 'mongoose';
+import IDoctorPersistence from '../../dataSchema/IUserPersistence';
 import { User, options } from './userSchema';
 
 const doctorSchema = new Schema({ doctorNumber: { type: String, index: true } }, options);
 
-const Doctor = User.discriminator('Doctor', doctorSchema);
+const DoctorSchema = User.discriminator('Doctor', doctorSchema);
 
-export { Doctor };
+export { DoctorSchema };

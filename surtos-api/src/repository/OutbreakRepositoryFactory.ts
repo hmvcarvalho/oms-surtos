@@ -1,4 +1,4 @@
-import IOutbreakRepository from './IOutbreakRepository';
+import IOutbreakRepository from './interfaces/IOutbreakRepository';
 import { MongoOutbreakRepository } from './mongo/MongoOutbreakRepository';
 import { datasource } from '../app';
 

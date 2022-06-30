@@ -1,4 +1,4 @@
-import IRecommendationRepository from './IRecommendationRepository';
+import IRecommendationRepository from './interfaces/IRecommendationRepository';
 import { MongoRecommendationRepository } from './mongo/MongoRecommendationRepository';
 import { datasource } from '../app';
 
