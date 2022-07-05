@@ -3,7 +3,7 @@ import IDoctorDTO from '../dtos/IDoctorDTO';
 import { DoctorService } from '../services/DoctorService';
 import IDoctorController from './interfaces/IDoctorController';
 import IDoctorService from '../services/interfaces/IDoctorService';
-import { DoctorMapper } from '../mappers/DoctorMapper';
+
 export class DoctorController implements IDoctorController {
     constructor(private doctorService: IDoctorService = new DoctorService()) {}
 

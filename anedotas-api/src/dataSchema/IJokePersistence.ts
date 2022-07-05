@@ -1,4 +1,4 @@
 export default interface IJokePersistence {
-    category: string;
-    path: string;
+    jokeCode: string;
+    joke: string;
 }
