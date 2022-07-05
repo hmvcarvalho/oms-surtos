@@ -5,15 +5,8 @@ import IJokePersistence from '../dataSchema/IJokePersistence';
 export class JokeMapper {
     public static toDTO(joke: JokeDomain): IJokeDTO {
         return {
-            category: joke.category,
-            path: joke.path,
-        };
-    }
-
-    public static toPersistence(joke: JokeDomain): IJokePersistence {
-        return {
-            category: joke.category,
-            path: joke.path,
+            jokeCode: joke.jokeCode,
+            joke: joke.joke,
         };
     }
 
