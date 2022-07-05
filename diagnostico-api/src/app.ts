@@ -16,6 +16,7 @@ export class App {
         this.mongoSetup();
         this.routes.doctor.routes(this.app);
         this.routes.admin.routes(this.app);
+        this.routes.user.routes(this.app);
     }
 
     private config(): void {

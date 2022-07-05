@@ -1,2 +1,4 @@
-import { User } from '../../domain/User';
-export default interface IUserRepository {}
+import { Login } from '../../domain/Login';
+export default interface IUserRepository {
+    findUser: (login: Login) => Promise<Login>;
+}
