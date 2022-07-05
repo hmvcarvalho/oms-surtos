@@ -12,8 +12,6 @@ export class VirusService {
     }
 
     async getAllVirus() {
-        console.log('VirusService: getAllVirus');
-
         let result: Virus[] = await this.repository.findAll();
         let virusList: IVirusDTO[] = result.map((virusList) => VirusMapper.toDto(virusList));
         return virusList;
