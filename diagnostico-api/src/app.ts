@@ -15,6 +15,7 @@ export class App {
         this.config();
         this.mongoSetup();
         this.routes.doctor.routes(this.app);
+        this.routes.admin.routes(this.app);
         this.routes.user.routes(this.app);
     }
 

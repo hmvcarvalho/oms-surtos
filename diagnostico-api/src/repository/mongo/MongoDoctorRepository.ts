@@ -7,7 +7,7 @@ export class MongoDoctorRepository implements IDoctorRepository {
     save = async (doctor: Doctor) => {
         const newDoctor = DoctorMapper.toPersistence(doctor);
 
-        return DoctorMapper.toDTO(
+        return DoctorMapper.toDomain(
             await DoctorSchema.findOneAndUpdate(
                 {
                     doctorNumber: newDoctor.doctorNumber,
