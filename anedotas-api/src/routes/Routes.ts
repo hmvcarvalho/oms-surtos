@@ -1,13 +1,13 @@
-import { JokeRoute } from './JokeRoute';
+import { CategoryRoute } from './CategoryRoute';
 class Routes {
-    private _joke: JokeRoute;
+    private _category: CategoryRoute;
 
     constructor() {
-        this._joke = new JokeRoute();
+        this._category = new CategoryRoute();
     }
 
-    get joke(): JokeRoute {
-        return this._joke;
+    get category(): CategoryRoute {
+        return this._category;
     }
 }
 

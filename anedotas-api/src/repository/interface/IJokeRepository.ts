@@ -1,8 +1,6 @@
 import { JokeDomain } from '../../domain/JokeDomain';
+import IJokePersistence from '../../dataSchema/IJokePersistence';
 
 export default interface IJokeRepository {
-    save: (joke: JokeDomain) => Promise<JokeDomain>;
-    findAll: () => Promise<Array<JokeDomain>>;
-    findById: (id: string) => Promise<JokeDomain>;
-    deleteById: (id: string) => Promise<boolean>;
+    findByCategory: (code: string) => Promise<JokeDomain[]>;
 }

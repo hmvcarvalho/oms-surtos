@@ -1,6 +1,6 @@
 interface IJokeDTO {
-    category: string;
-    path: string;
+    jokeCode: string;
+    joke: string;
 }
 
 export { IJokeDTO };
