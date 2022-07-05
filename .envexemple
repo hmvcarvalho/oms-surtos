@@ -1,2 +1,0 @@
-MONGO_URI="mongo://localhost:27017/test"
-PORT=3000
