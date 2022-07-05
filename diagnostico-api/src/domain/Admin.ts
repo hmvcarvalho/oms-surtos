@@ -24,7 +24,8 @@ export class Admin extends User {
 
     private constructor(adminDto: IAdminDTO) {
         super(adminDto);
-        (this.funcNum = adminDto.funcNum), (this.department = adminDto.department);
+        this.funcNum = adminDto.funcNum;    
+        this.department = adminDto.department;
     }
 
     public static createAdmin(adminDto: IAdminDTO) {
